@@ -28,6 +28,7 @@ endif
 LOCAL_CFLAGS += -DLOG_TAG=\"hdmi\"
 
 LOCAL_C_INCLUDES := \
+	$(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
 	$(LOCAL_PATH)/../include \
 	$(LOCAL_PATH)/../libhwcutils \
 	$(LOCAL_PATH)/../libexynosdisplay \
@@ -40,7 +41,8 @@ LOCAL_C_INCLUDES := \
 	$(TOP)/hardware/samsung_slsi-cm/exynos/libmpp \
 	$(TOP)/system/core/libsync/include
 
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_ADDITIONAL_DEPENDENCIES := \
+	INSTALLED_KERNEL_HEADERS
 
 LOCAL_SRC_FILES := \
 	ExynosExternalDisplay.cpp dv_timings.c

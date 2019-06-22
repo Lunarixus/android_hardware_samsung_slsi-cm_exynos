@@ -55,6 +55,7 @@ endif
 
 LOCAL_CFLAGS += -DLOG_TAG=\"hwcutils\"
 LOCAL_C_INCLUDES := \
+	$(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
 	$(LOCAL_PATH)/../include \
 	$(LOCAL_PATH)/../libhwc \
 	$(LOCAL_PATH)/../libexynosdisplay \
@@ -65,7 +66,8 @@ LOCAL_C_INCLUDES := \
 	$(TOP)/hardware/samsung_slsi-cm/$(TARGET_SOC)/libhwcutilsmodule \
 	$(TOP)/hardware/samsung_slsi-cm/exynos/libmpp
 
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_ADDITIONAL_DEPENDENCIES := \
+	INSTALLED_KERNEL_HEADERS
 
 ifeq ($(BOARD_HDMI_INCAPABLE), true)
 LOCAL_C_INCLUDES += $(TOP)/hardware/samsung_slsi-cm/exynos/libhdmi_dummy
